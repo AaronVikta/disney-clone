@@ -45,7 +45,7 @@ function Header() {
 
 export default Header
 const Nav = styled.nav`
-height: 70px;
+height: 10vh;
 background: #090b13;
 display: flex;
 padding:0 36px;
