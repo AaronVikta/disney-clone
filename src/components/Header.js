@@ -45,11 +45,12 @@ function Header() {
 
 export default Header
 const Nav = styled.nav`
-height: 10vh;
+height: 70px;
 background: #090b13;
 display: flex;
 padding:0 36px;
-align-items: center;`
+align-items: center;
+ overflow-x: hidden;`
 
 const Logo = styled.img`
     width: 80px
