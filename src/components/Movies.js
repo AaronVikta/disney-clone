@@ -1,10 +1,11 @@
 import React from 'react'
 
+
 function Movies() {
     return (
-        <div>
-            
-        </div>
+        <Container>
+            Header
+        </Container>
     )
 }
 
