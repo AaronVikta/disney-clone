@@ -50,7 +50,9 @@ background: #090b13;
 display: flex;
 padding:0 36px;
 align-items: center;
- overflow-x: hidden;`
+ overflow-x: hidden;
+ z-index: 1;
+ `
 
 const Logo = styled.img`
     width: 80px
