@@ -32,7 +32,7 @@ const dispatch = useDispatch();
 
 export default Home
 const Container = styled.main`
- min-height: calc(100vh-70px);
+ min-height: 90vh;
  padding: 0 calc(3.5vw + 5px);
  position:relative;
  overflow-x: hidden;
@@ -40,7 +40,7 @@ const Container = styled.main`
  &:before{
      background: url('/images/home-background.png') center center / cover no-repeat fixed;
      content:"";
-     position:absolute;
+     position:fixed;
      top:0;
      left:0;
      right:0;
