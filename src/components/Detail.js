@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import db from '../firebase'
+
 
 function Detail() {
 
     const {id} = useParams();
     const [movie, setMovie] = useState();
-
+    const history = useHistory();
+    
     useEffect(() =>{
         db.collection("movies")
         .doc(id)
@@ -17,6 +19,7 @@ function Detail() {
                 setMovie(doc.data())
             } else{
                 // redirect home
+                history.push("/")
             }
         })
     }, [])
@@ -30,7 +33,7 @@ function Detail() {
                     <img src={movie.backgroundImg}/>
                  </Background>
                 <ImageTitle>
-                    <img src="/images/baotitle.png"/>
+                    {/* <img src="/images/baotitle.png"/> */}
                 </ImageTitle>
                 <Controls>
                     <PlayButton>
@@ -51,9 +54,11 @@ function Detail() {
                     </GroupWatchButton>
                 </Controls>
                 <SubTitle>
+                <h4>{movie.title}</h4>
                     {movie.subTitle}
                 </SubTitle>
                 <Description>
+                    
                     {movie.description}
                 </Description>
                 </>
@@ -151,7 +156,10 @@ const SubTitle = styled.div`
     font-size: 15px;
     min-height: 20px;
     margin-top: 26px;
-`
+    h4{
+        font-size:30px;
+    }
+    `
 const Description = styled.div`
 line-height: 1.4;
 font-size: 20px;
