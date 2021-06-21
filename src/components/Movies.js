@@ -9,7 +9,6 @@ function Movies() {
     console.log("This is movies ", movies);
     return (
         <Container>
-            <h4>Recommended for You</h4>
             <Content>
                 { movies ?
                  movies.map((movie) =>(

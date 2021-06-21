@@ -25,6 +25,7 @@ const dispatch = useDispatch();
         <Container>
            <ImgSlider/>
            <Viewers/>
+           <h4>Recommended for You</h4>
            <Movies/>
         </Container>
     )

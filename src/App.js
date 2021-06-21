@@ -26,7 +26,7 @@ function App() {
             <Login/>
           </Route>
           <Route path="/movies">
-
+            <MovieListing/>
           </Route>
           <Route path="/">
             <Home/>
