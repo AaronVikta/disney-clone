@@ -27,6 +27,7 @@ function Detail() {
 
     return (
         <Container>
+            
             {movie &&
                 <>
                  <Background>
@@ -72,6 +73,7 @@ export default Detail
 const Container = styled.div`
 min-height: 90vh;
 padding: 0 calc(3.5vw + 5px);
+// width: 100vw;
 position:relative;
 `
 const Background = styled.div`

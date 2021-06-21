@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
@@ -6,8 +6,10 @@ import WatchlistIcon from '@material-ui/icons/Add'
 import OriginalIcon from '@material-ui/icons/Star'
 import MovieIcon from '@material-ui/icons/Movie'
 import SeriesIcon from '@material-ui/icons/Tv';
+import MenuIcon from '@material-ui/icons/Menu';
 import {Link} from 'react-router-dom';
 import {auth, provider} from '../firebase';
+import Cross from '@material-ui/icons/Cancel';
 import {
     selectUserName,
      selectUserPhotoUrl,
@@ -19,6 +21,8 @@ import {useHistory} from 'react-router-dom';
 
 
 function Header() {
+    const [showHam, setToggle] = useState(true)
+    const [showMenu, setMenu] = useState(false)
     const userName = useSelector(selectUserName);
     const userphotoUrl = useSelector(selectUserPhotoUrl);
     const dispatch = useDispatch();
@@ -36,6 +40,7 @@ function Header() {
             }
         });
     }, [])
+    
     const signIn = () =>{
         auth.signInWithPopup(provider)
         .then((result) =>{
@@ -55,18 +60,30 @@ function Header() {
             history.push("/login")
         })
     }
-
+    const toggleMenu = (e) =>{
+        e.preventDefault();
+        setToggle(false);
+        setMenu(true);
+    }
+    const showHamMenu = (e) =>{
+        e.preventDefault();
+        
+        setToggle(true);
+        setMenu(false);
+    }
     return (  
+        <>
         <Nav>
-            <Link to="/"><Logo src="/images/disney.png"/></Link>
-            {!userName
+            <Link to="/"><LogoDiv><Logo src="/images/disney.png"/></LogoDiv> </Link>
+          
+           {!userName
               ?
              <LoginContainer>
                   <Login onClick ={signIn}>Login</Login>
              </LoginContainer>
               :
                 <>
-                              <NavMenu>
+            <NavMenu>
                 <Link to="/"> <a href="#">
                     <HomeIcon  fontSize="small"/>
                     <span> HOME</span>
@@ -103,12 +120,104 @@ function Header() {
             <UserImg src="/images/aryan.jpg" alt=" My image"
             onClick={signOut}
             />
-
+                 {
+                     showHam ?
+                     <MobileNav>
+                    <Hamburger>
+                      <MenuIcon onClick ={toggleMenu}/>
+                   </Hamburger>
+                    </MobileNav>
+                    :
+                    ""
+                 }
                 </>
-            }
-
-            
+               
+            }    
             </Nav>
+            <ShowOnMobile>
+            {!userName
+              ?
+             ""
+              :
+                <>
+                {
+                    showMenu ?
+                    <HamMenu>
+
+                    <Cross className="cancel" onClick ={showHamMenu}/>
+                    <ul>
+                    <div className="ham-menu">
+                    <a>
+                    <Link to="#">
+                    <span> HOME</span>
+                    <span> <HomeIcon  fontSize="small" className="pad-ham"/></span>
+                        
+                    </Link>
+                    </a>
+                    </div>
+                    <div className="ham-menu">
+                    <a>
+                    <Link to="#">
+                    <span> SEARCH</span>
+                    <span> <SearchIcon  fontSize="small" className="pad-ham"/></span>
+                        
+                    </Link>
+                    </a>
+                    </div>
+    
+                   <div className="ham-menu">
+                    <a>
+                    <Link to="#">
+                    <span> WATCHLIST</span>
+                    <span> <WatchlistIcon  fontSize="small" className="pad-ham"/></span>
+                        
+                    </Link>
+                    </a>
+                    </div>
+                   
+                   <div className="ham-menu">
+                    <a>
+                    <Link to="#">
+                    <span> ORIGINALS</span>
+                    <span> <OriginalIcon  fontSize="small" className="pad-ham"/></span>
+                        
+                    </Link>
+                    </a>
+                    </div>
+                    <div className="ham-menu">
+                    <a>
+                    <Link to="#">
+                    <span> MOVIES</span>
+                    <span> <MovieIcon  fontSize="small" className="pad-ham"/></span>
+                        
+                    </Link>
+                    </a>
+                    </div>
+                    <div className="ham-menu">
+                    <a>
+                    <Link to="#">
+                    <span> SERIES</span>
+                    <span> <SeriesIcon  fontSize="small" className="pad-ham"/></span>
+                        
+                    </Link>
+                    </a>
+                    </div>
+                    <div className="ham-menu">
+                    <a>
+                    <Link to="#">
+                    <UserImg src="/images/aryan.jpg" alt=" My image" onClick={signOut}/>
+                        
+                    </Link>
+                    </a>
+                    </div>
+                    </ul>
+                </HamMenu>
+                :""
+                }
+                </>
+                }
+            </ShowOnMobile>
+            </>
     )
 }
 
@@ -117,15 +226,18 @@ const Nav = styled.nav`
 height: 70px;
 background: #090b13;
 display: flex;
-padding:0 36px;
+padding:0% 2% 0% 2%;
 align-items: center;
  overflow-x: hidden;
  z-index: 1;
  width: 100%;
+
+ 
  `
 
 const Logo = styled.img`
     width: 80px
+    
 `
 const NavMenu = styled.div`
 display:flex;
@@ -163,6 +275,9 @@ a {
             opacity: 1;
         }
     }
+    @media (max-width: 950px){
+        display:none;
+    }
 }
 `
 const UserImg = styled.img`
@@ -170,6 +285,9 @@ height: 48px;
 width: 48px;
 border-radius: 50%;
 curson:pointer;
+@media (max-width: 950px){
+    display:none;
+}
 `
 const Login = styled.div`
 border: 1px solid #f9f9f9;
@@ -190,4 +308,76 @@ const LoginContainer = styled.div`
 flex:1;
 display:flex;
 justify-content: flex-end;
+`
+const Hamburger = styled.div`
+    display:none;
+    @media screen and (max-width: 950px){
+        display:flex;
+        flex:1;
+        cursor:pointer;
+    }
+    
+`
+
+const LogoDiv = styled.div`
+    @media screen and (max-width: 912px){
+        flex:3;
+    }
+`
+const MobileNav = styled.div`
+` 
+const HamMenu = styled.div`
+display: none;
+padding: 10% 5%;
+font-size:20px;
+.ham-menu{
+    color:#fff;
+    margin-top:6%;
+    display: block;
+    margin-right: 20%;
+    align-items:center;
+    vertical-align: middle;
+    // justify-content:center;
+    &:hover{
+        border-bottom: 2px solid blue;
+    }
+     a{
+         text-decoration:none;
+         color:#fff;
+     }
+     .pad-ham{
+         margin-top: 20px;
+         color:#fff;
+     }
+}
+
+ @media (max-width:950px){
+     position: absolute;
+     height: 100vh;
+     top: 0;
+     right: 0;
+     display:block;
+     background-color: rgba(0, 0, 0, 0.9);
+     z-index:1000;
+     width: 50%;
+     .ham-link{
+        border: 2px solid blue;
+        margin-right: 20px;
+        color:#fff;
+    }
+    .cancel{
+        position:absolute;
+        top:0;
+        right:0;
+        opacity:0.7;
+        margin: 10px 10px;
+        cursor:pointer;
+    }
+ }
+`
+const ShowOnMobile = styled.div`
+display:none;
+@media (max-width: 950px){
+    display:block;
+}
 `

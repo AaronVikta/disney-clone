@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header'
 import Detail from './components/Detail';
 import Login from './components/Login';
+import MovieListing from './components/MovieListing'
 
 import {
   BrowserRouter as Router,
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login/>
+          </Route>
+          <Route path="/movies">
+
           </Route>
           <Route path="/">
             <Home/>
