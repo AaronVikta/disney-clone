@@ -56,17 +56,17 @@ function Header() {
     const signOut = ()=>{
         auth.signOut()
         .then(() =>{
-            dispatch(setSignOut);
+            dispatch(setSignOut());
             history.push("/login")
         })
     }
+    // handling the Hamburger menu toggles
     const toggleMenu = (e) =>{
         e.preventDefault();
         setToggle(false);
         setMenu(true);
     }
     const showHamMenu = (e) =>{
-        e.preventDefault();
         
         setToggle(true);
         setMenu(false);
@@ -108,7 +108,7 @@ function Header() {
                     <span> ORIGINALS</span>
                 </a>
                </Link>
-                <a href="#">
+                <a href="/movies">
                     <MovieIcon  fontSize="small"/>
                     <span> MOVIES</span>
                 </a>
@@ -117,7 +117,7 @@ function Header() {
                     <span> SERIES</span>
                 </a>
             </NavMenu>
-            <UserImg src="/images/aryan.jpg" alt=" My image"
+            <UserImg src={userphotoUrl} alt=" My image"
             onClick={signOut}
             />
                  {
@@ -148,7 +148,7 @@ function Header() {
                     <ul>
                     <div className="ham-menu">
                     <a>
-                    <Link to="#">
+                    <Link to="/" onClick ={showHamMenu}>
                     <span> HOME</span>
                     <span> <HomeIcon  fontSize="small" className="pad-ham"/></span>
                         
@@ -157,7 +157,7 @@ function Header() {
                     </div>
                     <div className="ham-menu">
                     <a>
-                    <Link to="#">
+                    <Link to="#" onClick ={showHamMenu}>
                     <span> SEARCH</span>
                     <span> <SearchIcon  fontSize="small" className="pad-ham"/></span>
                         
@@ -167,7 +167,7 @@ function Header() {
     
                    <div className="ham-menu">
                     <a>
-                    <Link to="#">
+                    <Link to="#" onClick ={showHamMenu}>
                     <span> WATCHLIST</span>
                     <span> <WatchlistIcon  fontSize="small" className="pad-ham"/></span>
                         
@@ -177,7 +177,7 @@ function Header() {
                    
                    <div className="ham-menu">
                     <a>
-                    <Link to="#">
+                    <Link to="#" onClick ={showHamMenu}>
                     <span> ORIGINALS</span>
                     <span> <OriginalIcon  fontSize="small" className="pad-ham"/></span>
                         
@@ -186,7 +186,7 @@ function Header() {
                     </div>
                     <div className="ham-menu">
                     <a>
-                    <Link to="#">
+                    <Link to="/movies" onClick ={showHamMenu}>
                     <span> MOVIES</span>
                     <span> <MovieIcon  fontSize="small" className="pad-ham"/></span>
                         
@@ -195,7 +195,7 @@ function Header() {
                     </div>
                     <div className="ham-menu">
                     <a>
-                    <Link to="#">
+                    <Link to="#" onClick ={showHamMenu}>
                     <span> SERIES</span>
                     <span> <SeriesIcon  fontSize="small" className="pad-ham"/></span>
                         
@@ -204,9 +204,10 @@ function Header() {
                     </div>
                     <div className="ham-menu">
                     <a>
-                    <Link to="#">
-                    <UserImg src="/images/aryan.jpg" alt=" My image" onClick={signOut}/>
-                        
+                    <Link>
+                    <UserImg className="mobile-user"
+                    src={userphotoUrl} alt=" My image" onClick={signOut}/>
+                    {/* <span>{userName}</span> */}
                     </Link>
                     </a>
                     </div>
@@ -284,7 +285,7 @@ const UserImg = styled.img`
 height: 48px;
 width: 48px;
 border-radius: 50%;
-curson:pointer;
+cursor:pointer;
 @media (max-width: 950px){
     display:none;
 }
@@ -372,6 +373,9 @@ font-size:20px;
         opacity:0.7;
         margin: 10px 10px;
         cursor:pointer;
+    }
+    .mobile-user{
+        display:inline;
     }
  }
 `
