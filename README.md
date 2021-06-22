@@ -1,4 +1,4 @@
-This project is an implementation of the disney plus web app. built using React, Redux and Firebase.
+This project is an implementation of the disney plus web app. built using React, Redux and Firebase with lots of inspiration from cleverprogramer (grateful)
 
 ## Available Scripts
 
