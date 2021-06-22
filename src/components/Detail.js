@@ -31,18 +31,18 @@ function Detail() {
             {movie &&
                 <>
                  <Background>
-                    <img src={movie.backgroundImg}/>
+                    <img src={movie.backgroundImg} alt="background"/>
                  </Background>
                 <ImageTitle>
                     {/* <img src="/images/baotitle.png"/> */}
                 </ImageTitle>
                 <Controls>
                     <PlayButton>
-                    <img src="/images/play-icon-black.png"/>
+                    <img src="/images/play-icon-black.png" alt="playback-icon"/>
                     <span>Play</span>
                     </PlayButton>
                     <TrailerButton>
-                    <img src="/images/play-icon-white.png"/>
+                    <img src="/images/play-icon-white.png" alt="trailer-icon"/>
                     <span>Trailer</span>
                     </TrailerButton>
                     <AddButton>
@@ -51,7 +51,7 @@ function Detail() {
                         </span>
                     </AddButton>
                     <GroupWatchButton>
-                        <img src="/images/group-icon.png"/>
+                        <img src="/images/group-icon.png" alt="group-icon"/>
                     </GroupWatchButton>
                 </Controls>
                 <SubTitle>
