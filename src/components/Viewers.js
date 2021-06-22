@@ -31,6 +31,10 @@ grid-template-columns: repeat(5, minmax(0, 1fr));
 grid-gap: 25px;
 padding: 30px 0px 26px;
 
+@media (max-width:950px){
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
 `
 
 const Wrap = styled.div`
@@ -51,4 +55,5 @@ img{
     transform: scale(1.05);
     border-color: rgba(249,249, 249,0.8);
 }
+
 `

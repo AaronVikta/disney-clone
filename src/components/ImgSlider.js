@@ -64,4 +64,10 @@ img{
     }
 }
 
+@media (max-width: 950px){
+    height: 30vh;
+    img{ 
+        object-fit:cover;
+    }
+}
 `

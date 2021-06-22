@@ -33,6 +33,14 @@ const Content = styled.div`
 display:grid;
 grid-gap: 25px;
 grid-template-columns: repeat(4, minmax(0, 1fr));
+@media (max-width:950px){
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width:532px){
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    margin: 5%;
+}
+
 
 `
 const Wrap = styled.div`
@@ -44,6 +52,8 @@ box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
 rgb(0 0 0 / 73%) 0px 16px 10px -10px;
 cursor:pointer;
 transition: all 258ms cubic-beizer(0.25,0.46, 0.45,0.94) 0s;
+
+
 
 img{
     width:100%;
@@ -57,4 +67,12 @@ img{
     border-color: rgba(249,249,249, 0.8);
    
 } 
+@media (max-width:532px){
+    max-height: 200px;
+    img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+ }
 `

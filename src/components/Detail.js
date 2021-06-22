@@ -122,6 +122,13 @@ margin-right: 20px;
 letter-spacing: 1.8px;
 cursor:pointer;
 text-transform: uppercase;
+@media (max-width: 636px){
+    padding: 0 4px;
+    height: 40px;
+    font-size:12px;
+    margin-right: 5px;
+    border-radius: 2px;
+}
 &:hover{
     background:rgb(198, 198, 198);
 }
@@ -161,6 +168,11 @@ const SubTitle = styled.div`
     h4{
         font-size:30px;
     }
+    @media (max-width:636px){
+        h4{
+            font-size:18px;
+        }
+        }
     `
 const Description = styled.div`
 line-height: 1.4;
@@ -168,4 +180,16 @@ font-size: 20px;
 margin-top:16px;
 color: rgb(249,249,249);
 max-width:760px;
+@media (max-width:636px){
+line-height: 1.4;
+font-size: 16px;
+ max-width: 450px;
+//  padding: 20px;
+}
+@media (max-width:439px){
+    line-height: 1.4;
+    font-size: 16px;
+     max-width: 380px;
+    //  padding: 0 20px;
+    }
 `
